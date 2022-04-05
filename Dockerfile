@@ -1,7 +1,7 @@
 FROM public.ecr.aws/bitnami/python:3.7
 
 
-COPY *.py .
+COPY *.py ./
 
 # Install the function's dependencies using file requirements.txt
 COPY requirements.txt  .
