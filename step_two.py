@@ -1,7 +1,26 @@
 import os
+import os
+import boto3
+
+client = boto3.client('stepfunctions')
 
 
 step_input = os.getenv("STEP_TWO", default="Default 2")
-print("this is step one with input: {i}.".format(i=step_input))
-with open("somefile.txt", 'r') as f:
-    f.read()
+task_token = os.getenv("TASK_TOKEN", default="TASK TOKEN PLACEHOLDER")
+
+
+print("this is step two with input: {i}.".format(i=step_input))
+try:
+    with open("/mount/data/somefile.txt", 'w') as f:
+        f.write("Writing from step 2...")
+except Exception as e:
+    client.send_task_failure(
+        taskToken=task_token,
+        error=str(e)
+    )
+else:
+    client.send_task_success(
+        taskToken=task_token,
+        output='{"status": "task one completed successfully"}'
+    )
+
