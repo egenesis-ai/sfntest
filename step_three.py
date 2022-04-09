@@ -20,5 +20,5 @@ except Exception as e:
 else:
     client.send_task_success(
         taskToken=task_token,
-        output='{"content":' + content + '}'
+        output='{"content":"' + content + '"}'
     )
