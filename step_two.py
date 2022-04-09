@@ -1,5 +1,4 @@
 import os
-import os
 import boto3
 
 client = boto3.client('stepfunctions')
@@ -21,6 +20,6 @@ except Exception as e:
 else:
     client.send_task_success(
         taskToken=task_token,
-        output='{"status": "task one completed successfully"}'
+        output='{"status": "task two completed successfully"}'
     )
 
