@@ -11,5 +11,5 @@ print("this is step one with input: {i}.".format(i=step_input))
 
 client.send_task_success(
     taskToken=task_token,
-    output='task one completed successfully'
+    output='{"status": "task one completed successfully"}'
 )
