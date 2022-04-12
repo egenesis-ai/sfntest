@@ -1,7 +1,7 @@
 import os
 import boto3
 
-client = boto3.client('stepfunctions')
+client = boto3.client('stepfunctions', region="us-east-1")
 
 
 step_input = os.getenv("STEP_ONE", default="Default 1")
